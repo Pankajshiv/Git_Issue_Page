@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
 
+import React,{useState,useEffect} from "react"
+import './App.css';
+import Links from "./Links"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import IssuePage from "./IssuePage";
 function App() {
+  const [fetchedData,setFetchedData]=useState([1,2,3])
+  const [content,setContent]=useState({})
+  const getdata=()=>{
+    fetch("https://api.github.com/repos/facebookincubator/create-react-app/issues")
+    .then(response=>response.json())
+    .then(data=>setFetchedData(data))
+  }
+  useEffect(() => {
+    getdata();
+  },[]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+        <Route path="/IssuePage" exact>
+           <IssuePage data={content}/>
+          </Route>
+          <Route path="/" exact>
+           <Links setContent={setContent} fetchedData={fetchedData} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+    
   );
 }
 
