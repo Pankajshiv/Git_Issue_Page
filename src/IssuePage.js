@@ -1,13 +1,17 @@
 import React from 'react'
 import './App.css';
-function IssuePage({data}) {
+
+function IssuePage({info}) {
     return (
-        <div className="issue-details">
-            <img src={data.user.avatar_url} alt="git_img" />
-            <h5>User Name : {data.user.login}</h5>
-            <h5>User Id : {data.user.id}</h5>
-               <p>{data.body}</p>
-            <h5>Comments : {data.comments}</h5>
+        <div className="details">
+            <h2>Profile</h2>
+            <img src={`${info.user.avatar_url}`} alt="image"/>
+            <h5>user_ID : {info.user.id}</h5>
+            <h5>user login name: {info.user.login}</h5>
+            <h5>git profile: {info.user.html_url}</h5>
+            <p>{info.body}</p>
+            <h5>Created At : {info.created_at}</h5>
+            <h5>Updated At : {info.updated_at}</h5>
         </div>
     )
 }

@@ -1,38 +1,40 @@
 
 import React,{useState,useEffect} from "react"
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import './App.css';
-import Links from "./Links"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import PageLink from "./PageLink"
 import IssuePage from "./IssuePage";
+
 function App() {
-  const [fetchedData,setFetchedData]=useState([1,2,3])
-  const [content,setContent]=useState({})
-  const getdata=()=>{
-    fetch("https://api.github.com/repos/facebookincubator/create-react-app/issues")
+  const [fetchData,setFetchData]=useState([1]);
+  const [info,setInfo]=useState({});
+
+  const dataFetching=()=>{
+    fetch("https://api.github.com/repos/facebook/react/issues")
     .then(response=>response.json())
-    .then(data=>setFetchedData(data))
+    .then((data)=>setFetchData(data))
   }
-  useEffect(() => {
-    getdata();
-  },[]);
+
+  useEffect(()=>{
+    dataFetching();
+  },[])
+
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-        <Route path="/IssuePage" exact>
-           <IssuePage data={content}/>
-          </Route>
-          <Route path="/" exact>
-           <Links setContent={setContent} fetchedData={fetchedData} />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-    
+    <>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/" exact>
+              <PageLink fetchData={fetchData} setInfo={setInfo}/>
+            </Route>
+
+            <Route path="/IssuePage" exact>
+                <IssuePage info={info}/>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </>
   );
 }
 

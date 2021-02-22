@@ -2,55 +2,71 @@
   text-align: center;
 }
 
-.issues-table {
-  display: block;
-  margin: 20px auto;
-  max-width: 977px;
-  border: 1px solid #e1e4e8;
+.table {
+  max-width: 850px;
+  border: 1px solid #dfdab5;
+  margin: 10px auto;
 }
 
-.issue-row {
-  max-width: 977px;
+.table-header{
+  color: rgb(122, 56, 122);
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-family: Gill Sans, sans-serif;
+}
+
+.table-body{
+  margin-left: 0px;
+}
+
+.row {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
   flex-wrap: wrap;
-  border-top: 1px solid #e1e4e8;
-  color: rgb(36, 41, 46);
-  padding-bottom: 10px;
-  padding-left: 16px;
-  padding-right: 10px;
+  border-top: 1px solid #747d88;
+  color: rgb(62, 68, 75);
+  padding:7px;
+  
 }
 
-.issue-row:hover {
-  background-color: #f6f8fa;
+.row:hover {
+  background-color: #eff0ee;
 }
 
 .issue-icon {
-  height: 100%;
   margin-right: 20px;
   padding-top: 15px;
+  padding-left: 15px;
 }
 
-.issue-title {
-  color: #242e2b;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: 'Times New Roman', Times, serif;
+.comment-icon{
+  margin-top: 10px;
+  margin-right: 10px;
+  text-align: right!important;
+}
+
+.flex-1 {
+  flex: 1!important;
+}
+
+.title {
+  color: #39413e;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Gill Sans, sans-serif;
   margin-bottom: 3px;
 }
-.header{
-  text-align: left;
-  color: green;
-  font-size: 25px;
-  font-weight: 600;
+
+
+.details{
   margin: 20px;
-  font-family: 'Times New Roman', Times, serif;
-  padding-left: 2%;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.issue-details{
-  margin: 5%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+img{
+  height: 200px;
+  width: 200px;
+  
 }
